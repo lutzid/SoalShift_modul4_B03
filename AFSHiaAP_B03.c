@@ -99,7 +99,7 @@ static int xmp_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
 	    struct passwd *username = getpwuid(filest.st_uid);
 	    struct group  *groupname = getgrgid(filest.st_gid);
 
-	    // if(access(file, R_OK) == -1 && access(file, W_OK) == -1 && access(file, X_OK) == -1){
+	    if(access(file, R_OK) == -1 && access(file, W_OK) == -1 && access(file, X_OK) == -1){
 	      if((strcmp(username->pw_name, "chipset") == 0 || strcmp(username->pw_name, "ic_controller") == 0) 
 	      	&& strcmp(groupname->gr_name, "rusak") == 0)
 	      {
@@ -117,7 +117,7 @@ static int xmp_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
 	        remove(file);
 	    	fclose(fi);
 	      }
-	    // }
+	    }
 	   
 		    memset(&st, 0, sizeof(st));
 			st.st_ino = de->d_ino;
