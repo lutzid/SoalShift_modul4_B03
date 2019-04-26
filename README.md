@@ -17,6 +17,10 @@ Misalkan ada file bernama “halo” di dalam folder “INI_FOLDER”, dan key y
 Perhatian: Karakter ‘/’ adalah karakter ilegal dalam penamaan file atau folder dalam *NIX, maka dari itu dapat diabaikan
 
 Jawab :
+<ul>
+	<li>Langkah pertama yang kami lakukan adalah dengan cara membuat fungsi encrypt dan decrypt, untuk encrypt dan decrypt, kami list semua urutan character dalam sebuah array, dan menyimpan setiap huruf berada pada posisi ke berapa, dan untuk bagian encrypt, kami memajukannya sebanyak 17 dengan mendapatkan posisi setiap huruf pada string yang mau di encrypt, sedangkan decrypt memundurkannya sebanyak 17, dengan cara yang sama dengan encrypt, apabila posisi huruf tersebut - 17 < 0, maka tambahkan dengan nilai modnya</li>
+	<li>Langkah selanjutnya, adalah melakukan encrypt setiap melakukan penelusuran apapun pada program untuk mendapatkan data pada folder yang belum di mount, dan melakukan decrypt untuk pembacaan</li>
+</ul>
 
 ## No2
 Semua file video yang tersimpan secara terpecah-pecah (splitted) harus secara otomatis tergabung (joined) dan diletakkan dalam folder “Videos”
@@ -49,6 +53,9 @@ Jawab:
 Pada folder YOUTUBER, setiap membuat folder permission foldernya akan otomatis menjadi 750. Juga ketika membuat file permissionnya akan otomatis menjadi 640 dan ekstensi filenya akan bertambah “.iz1”. File berekstensi “.iz1” tidak bisa diubah permissionnya dan memunculkan error bertuliskan “File ekstensi iz1 tidak boleh diubah permissionnya.”
 
 Jawab:
+<ul>
+	<li>Langkah pertama yang kami lakukan adalah, pada fungsi xmp_mkdir, apabila hasil encrypt pada path (karena pada folder yang belum di mount bernama "YOUTUBER" sehingga, pada folder yang telah di mount harus di encrypt terlebih dahulu) adalah "YOUTUBER", maka kita set mode nya 0750, lalu untuk syarat pembuatan file, maka pada fungsi xmp_create kami melakukan pengecekan yang sama dengan xmp_mkdir, hanya berbeda pada mode nya yang 0640 dan juga kita menambahkan ekstensi .iz1 pada file tersebut. Lalu untuk file yang berekstensi .iz1, kita mengaturnya pada fungsi xmp_chmod dan melakukan pengecekan ekstensi, apabila ekstensinya cocok, kita keluarkan perror bertuliskan sesuai dengan permintaan, lalu langsung keluar dari fungsi</li>
+</ul>
 
 ## No5
 Ketika mengedit suatu file dan melakukan save, maka akan terbuat folder baru bernama Backup kemudian hasil dari save tersebut akan disimpan pada backup dengan nama namafile_[timestamp].ekstensi. Dan ketika file asli dihapus, maka akan dibuat folder bernama RecycleBin, kemudian file yang dihapus beserta semua backup dari file yang dihapus tersebut (jika ada) di zip dengan nama namafile_deleted_[timestamp].zip dan ditaruh ke dalam folder RecycleBin (file asli dan backup terhapus). Dengan format [timestamp] adalah yyyy-MM-dd_HH:mm:ss
