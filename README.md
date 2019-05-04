@@ -48,6 +48,13 @@ Sebelum diterapkannya file system ini, Atta pernah diserang oleh hacker LAPTOP_R
 Jika ditemukan file dengan spesifikasi tersebut ketika membuka direktori, Atta akan menyimpan nama file, group ID, owner ID, dan waktu terakhir diakses dalam file “filemiris.txt” (format waktu bebas, namun harus memiliki jam menit detik dan tanggal) lalu menghapus “file bahaya” tersebut untuk mencegah serangan lanjutan dari LAPTOP_RUSAK.
 
 Jawab:
+<ul>
+	<li>Pertama-tama dapatkan dulu filepath asli kemudian ambil stat dari file tersebut.</li>
+	<li>Kemudian kita simpan nama owner dan nama group dari filenya.</li>
+	<li>Setelah itu cek apakah file tersebut bisa dibuka atau tidak. Apabila tidak bisa kita cek lagi apakah nama ownernya chipset atau ic_controller dan nama groupnya rusak.</li>
+	<li>Apabila iya maka file tersebut akan dicatat di filemiris.txt.</li>
+	<li>Kemudian filenya akan didelete.</li>
+</ul>
 
 ## No4
 Pada folder YOUTUBER, setiap membuat folder permission foldernya akan otomatis menjadi 750. Juga ketika membuat file permissionnya akan otomatis menjadi 640 dan ekstensi filenya akan bertambah “.iz1”. File berekstensi “.iz1” tidak bisa diubah permissionnya dan memunculkan error bertuliskan “File ekstensi iz1 tidak boleh diubah permissionnya.”
